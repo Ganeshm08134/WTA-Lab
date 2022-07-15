@@ -1,0 +1,57 @@
+9)9. Write a PHP program named states.py that declares a variable states with value
+"Mississippi Alabama Texas Massachusetts Kansas". write a PHP program that does
+the following:
+a. Search for a word in variable states that ends in xas. Store this word in element
+0 of a list named statesList.
+b. Search for a word in states that begins with k and ends in s. Perform a caseinsensitive
+comparison. [Note: Passing re.Ias a second parameter to method
+compile performs a case-insensitive comparison.] Store this word in element1 of statesList.
+c. Search for a word in states that begins with M and ends in s. Store this
+word in element 2 of the list.
+d. Search for a word in states that ends in a. Store this word in element 3 of the
+list.
+
+Soln)
+
+<?php
+header('Content-Type: text/plain');
+$allTheStates = "Mississippi Alabama Texas Massachusetts Kansas";
+$statesArray = [];
+$states1 = explode(' ', $allTheStates);
+$i = 0;
+//states that ends in xas
+foreach ($states1 as $state) {
+ if (preg_match('/xas$/', ($state))) {
+ $statesArray[$i] = ($state);
+ $i = $i + 1;
+ print "\nThe States that ends in xas:" . $state;
+ }
+}
+//states that begins with k and ends in s
+foreach ($states1 as $state) {
+ if (preg_match('/^k.*s$/i', ($state))) {
+ $statesArray[$i] = ($state);
+ $i = $i + 1;
+ echo "\nThe states that begins with k ans ends in s:" . $state;
+ }
+}
+//states that begins with M and ends in s
+foreach($states1 as $state) {
+if (preg_match('/^M.*s$/', ($state))) {
+ $statesArray[$i] = ($state);
+ $i = $i + 1;
+ echo "\nThe states that begins with M and ends in s:" . $state;
+}
+}
+//states that ends in a
+foreach($states1 as $state) {
+if (preg_match('/a$/', ($state))) {
+ $statesArray[$i] = ($state);
+ $i = $i + 1;
+ echo "\nThe states that ends in a:" . $state;
+}
+}
+foreach ($statesArray as $element => $value) {
+ print( "\n" . $value . " is the element " . $element);
+}
+?>
